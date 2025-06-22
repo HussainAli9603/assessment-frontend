@@ -1,6 +1,6 @@
 // client/src/components/TaskInput.js
 import React, { useState } from 'react';
-import "../style/TaskInput.css"
+import "../style/taskInput.css"
 
 /**
  * TaskInput Component
