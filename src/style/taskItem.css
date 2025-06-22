@@ -1,0 +1,160 @@
+ /* List item container: flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 ease-in-out */
+        .task-item {
+            display: flex;
+            flex-direction: column; /* flex-col */
+            align-items: flex-start; /* items-start */
+            justify-content: space-between; /* justify-between */
+            padding: 1rem; /* p-4 */
+            background-color: #fff;
+            border: 1px solid var(--color-gray-200); /* border border-gray-200 */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: var(--shadow-sm); /* shadow-sm */
+            transition: box-shadow 0.2s ease-in-out; /* transition-shadow duration-200 ease-in-out */
+            width: 100%; /* Take full width in context */
+            max-width: 500px; /* Example max-width for item */
+            box-sizing: border-box;
+        }
+        .task-item:hover {
+            box-shadow: var(--shadow-md); /* hover:shadow-md */
+        }
+        @media (min-width: 640px) { /* sm:flex-row sm:items-center */
+            .task-item {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        /* Checkbox and text wrapper: flex items-center w-full sm:w-auto mb-3 sm:mb-0 */
+        .task-content-wrapper {
+            display: flex;
+            align-items: center; /* items-center */
+            width: 100%; /* w-full */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        @media (min-width: 640px) { /* sm:w-auto sm:mb-0 */
+            .task-content-wrapper {
+                width: auto;
+                margin-bottom: 0;
+            }
+        }
+
+        /* Checkbox: form-checkbox h-5 w-5 text-blue-600 rounded-md transition-colors duration-150 cursor-pointer focus:ring-blue-500 */
+        .task-checkbox {
+            height: 1.25rem; /* h-5 */
+            width: 1.25rem; /* w-5 */
+            color: var(--color-blue-600); /* text-blue-600 */
+            border-radius: 0.375rem; /* rounded-md */
+            cursor: pointer;
+            transition: all 0.15s ease-in-out; /* transition-colors duration-150 */
+            border: 1px solid var(--color-gray-400); /* Default checkbox border */
+            appearance: none; /* Hide default checkbox */
+            background-color: #fff;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+        .task-checkbox:checked {
+            background-color: var(--color-blue-600);
+            border-color: var(--color-blue-600);
+        }
+        .task-checkbox:checked::before {
+            content: '\2713'; /* Checkmark character */
+            display: block;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            line-height: 1.1;
+        }
+        .task-checkbox:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 */
+        }
+
+        /* Task text span: ml-3 text-lg font-medium text-gray-800 break-words line-through text-gray-500 (conditional) */
+        .task-text {
+            margin-left: 0.75rem; /* ml-3 */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 500; /* font-medium */
+            color: var(--color-gray-800); /* text-gray-800 */
+            word-break: break-word; /* break-words */
+            flex-grow: 1; /* allow it to take available space */
+        }
+        .task-text.completed {
+            text-decoration: line-through; /* line-through */
+            color: var(--color-gray-500); /* text-gray-500 */
+        }
+
+        /* Task edit input (when isEditing is true): ml-3 p-2 border border-blue-300 rounded-md flex-grow focus:outline-none focus:ring-1 focus:ring-blue-400 text-gray-800 text-lg */
+        .task-edit-input {
+            margin-left: 0.75rem; /* ml-3 */
+            padding: 0.5rem; /* p-2 */
+            border: 1px solid var(--color-blue-300); /* border border-blue-300 */
+            border-radius: 0.375rem; /* rounded-md */
+            flex-grow: 1; /* flex-grow */
+            outline: none; /* focus:outline-none */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            font-size: 1.125rem; /* text-lg */
+            color: var(--color-gray-800);
+            box-sizing: border-box; /* Include padding in element's total dimensions */
+        }
+        .task-edit-input:focus {
+            box-shadow: 0 0 0 1px var(--color-blue-400); /* focus:ring-1 focus:ring-blue-400 */
+        }
+
+        /* Action buttons container: flex-shrink-0 flex gap-2 w-full sm:w-auto justify-end sm:justify-start */
+        .task-actions {
+            flex-shrink: 0; /* flex-shrink-0 */
+            display: flex;
+            gap: 0.5rem; /* gap-2 */
+            width: 100%; /* w-full */
+            justify-content: flex-end; /* justify-end */
+        }
+        @media (min-width: 640px) { /* sm:w-auto sm:justify-start */
+            .task-actions {
+                width: auto;
+                justify-content: flex-start; /* On larger screens, buttons align to the start of their container */
+            }
+        }
+
+        /* Edit Button: px-4 py-2 bg-yellow-500 text-white rounded-lg shadow-sm hover:bg-yellow-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75 */
+        .task-edit-btn {
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            background-color: yellowgreen; /* bg-yellow-500 */
+            color: #fff;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: var(--shadow-sm); /* shadow-sm */
+            transition: background-color 0.2s ease-in-out; /* transition-colors duration-200 */
+            border: none;
+            cursor: pointer;
+            outline: none; /* focus:outline-none */
+            font-size: 1rem; /* default button font size */
+        }
+        .task-edit-btn:hover {
+            background-color: red; /* hover:bg-yellow-600 */
+        }
+        .task-edit-btn:focus {
+            box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.75); /* focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-75 - approximation */
+        }
+
+        /* Delete Button: px-4 py-2 bg-red-600 text-white rounded-lg shadow-sm hover:bg-red-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-75 */
+        .task-delete-btn {
+            padding: 0.5rem 1rem; /* px-4 py-2 */
+            background-color: blueviolet; /* bg-red-600 */
+            color: #fff;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: var(--shadow-sm); /* shadow-sm */
+            transition: background-color 0.2s ease-in-out; /* transition-colors duration-200 */
+            border: none;
+            cursor: pointer;
+            outline: none; /* focus:outline-none */
+            font-size: 1rem; /* default button font size */
+        }
+        .task-delete-btn:hover {
+            background-color: var(--color-red-700); /* hover:bg-red-700 */
+        }
+        .task-delete-btn:focus {
+            box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.75); /* focus:ring-2 focus:ring-red-600 focus:ring-opacity-75 - approximation */
+        }
+
+        /* Utility classes for JS toggling */
+        .hidden-element {
+            display: none !important;
+        }

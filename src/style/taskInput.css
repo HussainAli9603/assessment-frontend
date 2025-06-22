@@ -1,0 +1,66 @@
+/* Form container: flex flex-col sm:flex-row gap-3 p-4 bg-white rounded-xl shadow-md mb-6 w-full max-w-lg mx-auto */
+        .task-input-form {
+            display: flex;
+            flex-direction: column; /* flex-col */
+            gap: 0.75rem; /* gap-3 */
+            padding: 1rem; /* p-4 */
+            background-color: #fff; /* bg-white */
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: var(--shadow-md); /* shadow-md */
+            margin-bottom: 1.5rem; /* mb-6 */
+            width: 100%; /* w-full */
+            max-width: 32rem; /* max-w-lg (approx) */
+            margin-left: auto; /* mx-auto */
+            margin-right: auto; /* mx-auto */
+            box-sizing: border-box; /* Include padding in element's total dimensions */
+        }
+        @media (min-width: 640px) { /* sm:flex-row */
+            .task-input-form {
+                flex-direction: row;
+            }
+        }
+
+        /* Input field: flex-grow p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 text-lg text-gray-800 */
+        .task-input-field {
+            flex-grow: 1; /* flex-grow */
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid var(--color-gray-300); /* border border-gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            outline: none; /* focus:outline-none */
+            font-size: 1.125rem; /* text-lg */
+            color: var(--color-gray-800); /* text-gray-800 */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* transition duration-150 */
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+        .task-input-field:focus {
+            border-color: var(--color-blue-500); /* No direct Tailwind class for border color on focus, so focusing ring handles it */
+            box-shadow: 0 0 0 2px var(--color-blue-500); /* focus:ring-2 focus:ring-blue-500 - approximation */
+        }
+
+        /* Button: mt-3 sm:mt-0 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 text-lg */
+        .task-submit-button {
+            margin-top: 0.75rem; /* mt-3 */
+            padding: 0.75rem 1.5rem; /* px-6 py-3 */
+            background-color: var(--color-blue-600); /* bg-blue-600 */
+            color: #fff; /* text-white */
+            font-weight: 600; /* font-semibold */
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: var(--shadow-md); /* shadow-md */
+            transition: background-color 0.2s ease-in-out; /* transition-colors duration-200 */
+            border: none; /* remove default button border */
+            cursor: pointer;
+            outline: none; /* focus:outline-none */
+            font-size: 1.125rem; /* text-lg */
+            flex-shrink: 0; /* Prevents button from shrinking in flex container */
+        }
+        .task-submit-button:hover {
+            background-color: var(--color-blue-700); /* hover:bg-blue-700 */
+        }
+        .task-submit-button:focus {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.75); /* focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 - approximation */
+        }
+        @media (min-width: 640px) { /* sm:mt-0 */
+            .task-submit-button {
+                margin-top: 0;
+            }
+        }
